@@ -74,6 +74,7 @@ main section .bottom {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 main section .bottom .placeholder {
@@ -82,6 +83,7 @@ main section .bottom .placeholder {
     align-items: center;
     opacity: 0.6;
     gap: var(--gutter-md);
+    position: absolute;
 }
 
 main section .bottom .placeholder i {
@@ -90,6 +92,12 @@ main section .bottom .placeholder i {
 
 main section .bottom .placeholder p {
     font-size: var(--font-size-lg);
+}
+
+main section .bottom canvas {
+    max-width: 90%;
+    max-height: 80vh;
+    display: block;
 }  
 
 main section .right {
@@ -102,10 +110,40 @@ main section .right .filters {
     display: flex;
     flex-direction: column;
     gap: var(--gutter-md);
+    max-height: 70vh;
+    overflow-y: auto;
+    padding-right: var(--padding-md);
+}
+
+main section .right .filters::-webkit-scrollbar {
+    width: 6px;
+}
+
+main section .right .filters::-webkit-scrollbar-track {
+    background: var(--bg-secondary-color);
+    border-radius: 10px;
+}
+
+main section .right .filters::-webkit-scrollbar-thumb {
+    background: var(--bg-active-color);
+    border-radius: 10px;
+}
+
+main section .right .filters::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary-color);
 }
 
 main section .right .filter {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gutter-sm);
+}
+
+main section .right .filter p {
+    font-size: var(--font-size-sm);
+    text-transform: capitalize;
+    color: var(--text-secondary-color);
 }
 
 main section .right .filter input {
@@ -113,25 +151,36 @@ main section .right .filter input {
     outline: none;
     margin-top: var(--margin-sm);
     appearance: none;
+    cursor: pointer;
 }
 
 main section .right .filter input::-webkit-slider-runnable-track {
-    background-color: var(--bg-active-color);
-    height: 3px;
+    background-color: var(--bg-secondary-color);
+    height: 4px;
     border-radius: 2px;
 }
 
 main section .right .filter input::-webkit-slider-thumb {
     cursor: pointer;
     appearance: none;
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
-    background-color: red;
-    margin: -8.5px;
+    background-color: var(--bg-success-color);
+    margin: -7px 0;
 }
 
-canvas {
-    max-width: 90%;
-    max-height: 80vh;
+main section .right .filter input::-moz-range-track {
+    background-color: var(--bg-secondary-color);
+    height: 4px;
+    border-radius: 2px;
+}
+
+main section .right .filter input::-moz-range-thumb {
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: var(--bg-success-color);
+    border: none;
 }
