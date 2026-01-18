@@ -69,6 +69,10 @@ const filters = {
     }
 }
 
+const imageCanvas = document.querySelector("#image-canvas");
+const imgInput = document.querySelector("#image-input");
+const canvasCtx = imageCanvas.getContext("2d");
+
 const filtersContainer = document.querySelector(".filters");
 
 function createFilterElement(name, unit = "%", value, min, max) {
@@ -99,3 +103,17 @@ const filterElement = createFilterElement(filter, filters[filter].unit, filters[
 filtersContainer.appendChild(filterElement);
 
 })
+
+imgInput.addEventListener("change", (event) {
+    const file = event.target.files[0];
+    const imagePlaceholder = document.querySelector(".placeholder");
+    imagePlaceholder.style.display = "none";
+
+    const img = new Image();
+    img.src = URL.createObjectURL(file);
+
+    img.onload = function() { 
+        imageCanvas.width = img.width;
+        imageCanvas.height = img.height;
+        canvasCtx.drawImage(img, 0, 0);
+})    
